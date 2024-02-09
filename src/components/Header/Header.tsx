@@ -4,7 +4,16 @@ import React from 'react';
 
 const Header = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isLogin, setIsLogin] = React.useState(false);
+  const [isLogin, setIsLogin] = React.useState(true);
+
+  const onClickNewPost = () => {
+    const modal = document.getElementById(
+      'new_post_modal'
+    ) as HTMLDialogElement;
+    if (modal) {
+      modal.showModal();
+    }
+  };
 
   return (
     <header className='navbar bg-green-500 '>
@@ -16,7 +25,7 @@ const Header = () => {
           {isLogin ? (
             <>
               <li>
-                <a>New Post</a>
+                <a onClick={onClickNewPost}>New Post</a>
               </li>
               <li>
                 <a>Logout</a>
