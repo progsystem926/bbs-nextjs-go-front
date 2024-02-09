@@ -1,3 +1,4 @@
+import NewPostModal from '@/components/NewPostModal/NewPostModal';
 import PostList from '@/components/PostList/PostList';
 
 export default function Home() {
@@ -5,6 +6,7 @@ export default function Home() {
     <>
       <main>
         <PostList />
+        <NewPostModal />
       </main>
     </>
   );
