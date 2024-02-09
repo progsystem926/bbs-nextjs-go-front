@@ -1,5 +1,10 @@
+'use client';
+
+import React from 'react';
+
 const Header = () => {
-  const isLogin = false;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isLogin, setIsLogin] = React.useState(false);
 
   return (
     <header className='navbar bg-green-500 '>
