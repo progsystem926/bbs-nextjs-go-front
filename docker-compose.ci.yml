@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  front:
+    container_name: front
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    tty: true
+    volumes:
+      - ./src:/app
+    ports:
+      - "3000:3000"
