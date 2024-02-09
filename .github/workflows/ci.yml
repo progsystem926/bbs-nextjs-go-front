@@ -31,13 +31,9 @@ jobs:
           docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} exec -T front yarn
       - name: Clean
         run: |
-<<<<<<< HEAD
           yarn cache clean
           rm -rf node_modules
           rm -f yarn.lock
-=======
-          yarn cache clean && rm -rf node_modules && rm -f yarn.lock
->>>>>>> 2f737aff43727d5d9da35e2d415988468931bd92
       - name: Install 2
         run: |
           docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} exec -T front yarn
