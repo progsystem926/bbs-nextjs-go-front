@@ -13,7 +13,11 @@
   },
   "plugins": ["import", "@typescript-eslint", "tailwindcss"],
   "root": true,
-  "ignorePatterns": ["next.config.mjs", "jest.config.mjs"],
+  "ignorePatterns": [
+    "next.config.mjs",
+    "jest.config.mjs",
+    "postcss.config.cjs"
+  ],
   "rules": {
     "import/order": [
       "error",
