@@ -26,10 +26,15 @@ jobs:
       - name: Container Status
         run: |
           docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} ps
+      - name: Install 1
+        run: |
+          docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} exec -T front yarn
       - name: Clean
         run: |
-          yarn cache clean && rm -rf node_modules && rm -f yarn.lock
-      - name: Install
+          yarn cache clean
+          rm -rf node_modules
+          rm -f yarn.lock
+      - name: Install 2
         run: |
           docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} exec -T front yarn
       - name: Run TEST
