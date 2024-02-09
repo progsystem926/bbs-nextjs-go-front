@@ -26,15 +26,12 @@ jobs:
       - name: Container Status
         run: |
           docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} ps
-      - name: Install 1
-        run: |
-          docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} exec -T front yarn
       - name: Clean
         run: |
-          yarn cache clean
-          rm -rf node_modules
-          rm -f yarn.lock
-      - name: Install 2
+          docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} exec -T front yarn cache clean
+          docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} exec -T front rm -rf node_modules
+          docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} exec -T front rm -f yarn.lock
+      - name: Install
         run: |
           docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} exec -T front yarn
       - name: Run TEST
@@ -42,5 +39,5 @@ jobs:
           docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} exec -T front yarn jest
       - name: Run CI
         run: |
-          docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} exec -T front yarn prettier
+          docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} exec -T front yarn format
           docker-compose -f ${{ env.DOCKER_COMPOSE_FILE }} exec -T front yarn lint
