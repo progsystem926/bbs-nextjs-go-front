@@ -38,6 +38,11 @@
             "pattern": "@/components/**",
             "group": "internal",
             "position": "before"
+          },
+          {
+            "pattern": "@/graphql/**",
+            "group": "internal",
+            "position": "before"
           }
         ],
         "alphabetize": {
