@@ -28,7 +28,7 @@ export const createPost = graphql(/* GraphQL */ `
 
 export const createUser = graphql(/* GraphQL */ `
   mutation createUser($name: String!, $email: String!, $password: String!) {
-    createPost(input: { name: $name, email: $email, password: $password }) {
+    createUser(input: { name: $name, email: $email, password: $password }) {
       id
       name
       email

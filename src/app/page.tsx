@@ -1,5 +1,5 @@
 import NewPostModal from '@/components/NewPostModal/NewPostModal';
-import PostList from '@/components/PostList/PostList';
+import { PostList } from '@/components/PostList';
 
 export default function Home() {
   return (

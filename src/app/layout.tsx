@@ -2,7 +2,11 @@ import { Inter } from 'next/font/google';
 
 import Header from '@/components/Header/Header';
 
+import CookiesProviderX from './_provider/cookiesProviderX';
+import QueryClientProviderX from './_provider/queryClientProviderX';
+
 import type { Metadata } from 'next';
+
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -20,8 +24,12 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <Header />
-        {children}
+        <CookiesProviderX>
+          <QueryClientProviderX>
+            <Header />
+            {children}
+          </QueryClientProviderX>
+        </CookiesProviderX>
       </body>
     </html>
   );
