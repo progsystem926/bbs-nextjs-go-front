@@ -1,11 +1,6 @@
 'use client';
 
-import React from 'react';
-
 const Header = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isLogin, setIsLogin] = React.useState(true);
-
   const onClickNewPost = () => {
     const modal = document.getElementById(
       'new_post_modal'
@@ -22,25 +17,18 @@ const Header = () => {
       </div>
       <div className='flex-none'>
         <ul className='menu menu-horizontal px-1'>
-          {isLogin ? (
-            <>
-              <li>
-                <a onClick={onClickNewPost}>New Post</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <a>Sign up</a>
-              </li>
-              <li>
-                <a>Login</a>
-              </li>
-            </>
-          )}
+          <li>
+            <a onClick={onClickNewPost}>New Post</a>
+          </li>
+          <li>
+            <a>Logout</a>
+          </li>
+          <li>
+            <a>Sign up</a>
+          </li>
+          <li>
+            <a>Login</a>
+          </li>
         </ul>
       </div>
     </header>

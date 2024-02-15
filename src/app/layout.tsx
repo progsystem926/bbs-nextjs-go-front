@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google';
 
 import Header from '@/components/Header/Header';
+import NewPostModal from '@/components/NewPostModal/NewPostModal';
 
 import CookiesProviderX from './_provider/cookiesProviderX';
 import QueryClientProviderX from './_provider/queryClientProviderX';
@@ -29,6 +30,7 @@ export default function RootLayout({
           <RecoilProvider>
             <QueryClientProviderX>
               <Header />
+              <NewPostModal />
               {children}
             </QueryClientProviderX>
           </RecoilProvider>
