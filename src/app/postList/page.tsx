@@ -1,9 +1,9 @@
-import { Login } from '@/components/Login';
+import { PostList } from '@/components/PostList';
 
 export default function Home() {
   return (
     <main>
-      <Login />
+      <PostList />
     </main>
   );
 }

@@ -4,6 +4,7 @@ import Header from '@/components/Header/Header';
 
 import CookiesProviderX from './_provider/cookiesProviderX';
 import QueryClientProviderX from './_provider/queryClientProviderX';
+import RecoilProvider from './_provider/recoilProvider';
 
 import type { Metadata } from 'next';
 
@@ -25,10 +26,12 @@ export default function RootLayout({
     <html lang='en'>
       <body className={inter.className}>
         <CookiesProviderX>
-          <QueryClientProviderX>
-            <Header />
-            {children}
-          </QueryClientProviderX>
+          <RecoilProvider>
+            <QueryClientProviderX>
+              <Header />
+              {children}
+            </QueryClientProviderX>
+          </RecoilProvider>
         </CookiesProviderX>
       </body>
     </html>
