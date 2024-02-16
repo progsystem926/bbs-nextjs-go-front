@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google';
 
 import Header from '@/components/Header';
-import NewPostModal from '@/components/NewPostModal/NewPostModal';
+import NewPostModal from '@/components/NewPostModal';
 
 import CookiesProviderX from './_provider/cookiesProviderX';
 import QueryClientProviderX from './_provider/queryClientProviderX';
