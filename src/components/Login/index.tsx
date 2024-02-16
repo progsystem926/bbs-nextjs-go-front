@@ -17,13 +17,11 @@ export function Login() {
   const onSubmit: SubmitHandler<Login> = async (data) => login(data);
 
   return (
-    <>
-      <Presenter
-        handleSubmit={handleSubmit}
-        onSubmit={onSubmit}
-        register={register}
-        errors={errors}
-      />
-    </>
+    <Presenter
+      handleSubmit={handleSubmit}
+      onSubmit={onSubmit}
+      register={register}
+      errors={errors}
+    />
   );
 }

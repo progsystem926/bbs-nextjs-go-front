@@ -16,5 +16,5 @@ export const PostList = () => {
     router.push('/login');
   }
 
-  return <>{data && <Presenter data={data} />}</>;
+  return <Presenter data={data} isLoading={isLoading} />;
 };
