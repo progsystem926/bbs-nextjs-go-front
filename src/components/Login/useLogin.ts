@@ -39,7 +39,7 @@ export const useLogin = () => {
         .then((response) => response.json())
         .then((data) => {
           setUser(data);
-          router.push('/postList');
+          router.push('/posts');
         })
         .catch((error) => {
           console.error('Error:', error);

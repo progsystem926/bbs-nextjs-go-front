@@ -45,7 +45,7 @@ export type MutationCreateUserArgs = {
 
 export type NewPost = {
   text: Scalars['String']['input'];
-  userId: Scalars['String']['input'];
+  userId: Scalars['Int']['input'];
 };
 
 export type NewUser = {
@@ -91,7 +91,7 @@ export type GetPostQueryDocumentQuery = {
 };
 
 export type CreatePostMutationVariables = Exact<{
-  userId: Scalars['String']['input'];
+  userId: Scalars['Int']['input'];
   text: Scalars['String']['input'];
 }>;
 
@@ -179,10 +179,7 @@ export const CreatePostDocument = {
           },
           type: {
             kind: 'NonNullType',
-            type: {
-              kind: 'NamedType',
-              name: { kind: 'Name', value: 'String' },
-            },
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
           },
         },
         {

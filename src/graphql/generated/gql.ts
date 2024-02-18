@@ -15,7 +15,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 const documents = {
   '\n  query getPostQueryDocument {\n    getPosts {\n      id\n      text\n      created_at\n      user {\n        name\n      }\n    }\n  }\n':
     types.GetPostQueryDocumentDocument,
-  '\n  mutation createPost($userId: String!, $text: String!) {\n    createPost(input: { userId: $userId, text: $text }) {\n      id\n      text\n      user {\n        id\n      }\n      created_at\n    }\n  }\n':
+  '\n  mutation createPost($userId: Int!, $text: String!) {\n    createPost(input: { userId: $userId, text: $text }) {\n      id\n      text\n      user {\n        id\n      }\n      created_at\n    }\n  }\n':
     types.CreatePostDocument,
   '\n  mutation createUser($name: String!, $email: String!, $password: String!) {\n    createUser(input: { name: $name, email: $email, password: $password }) {\n      id\n      name\n      email\n      password\n    }\n  }\n':
     types.CreateUserDocument,
@@ -45,8 +45,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: '\n  mutation createPost($userId: String!, $text: String!) {\n    createPost(input: { userId: $userId, text: $text }) {\n      id\n      text\n      user {\n        id\n      }\n      created_at\n    }\n  }\n'
-): (typeof documents)['\n  mutation createPost($userId: String!, $text: String!) {\n    createPost(input: { userId: $userId, text: $text }) {\n      id\n      text\n      user {\n        id\n      }\n      created_at\n    }\n  }\n'];
+  source: '\n  mutation createPost($userId: Int!, $text: String!) {\n    createPost(input: { userId: $userId, text: $text }) {\n      id\n      text\n      user {\n        id\n      }\n      created_at\n    }\n  }\n'
+): (typeof documents)['\n  mutation createPost($userId: Int!, $text: String!) {\n    createPost(input: { userId: $userId, text: $text }) {\n      id\n      text\n      user {\n        id\n      }\n      created_at\n    }\n  }\n'];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
