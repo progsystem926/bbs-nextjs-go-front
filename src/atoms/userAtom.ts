@@ -7,7 +7,7 @@ type UserState = { userId: string } | null;
 
 const { persistAtom } = recoilPersist({
   key: 'recoil-persist',
-  storage: typeof window === 'undefined' ? undefined : localStorage,
+  storage: typeof window === 'undefined' ? undefined : sessionStorage,
 });
 
 const userState = atom<UserState>({

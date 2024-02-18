@@ -4,9 +4,12 @@ import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { useCookies } from 'react-cookie';
 
+import { useUserState } from '@/atoms/userAtom';
+
 const useLogout = () => {
   const [cookies] = useCookies(['_csrf']);
   const router = useRouter();
+  const { setUser } = useUserState();
   const logout = useCallback(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/logout`, {
       headers: {
@@ -17,13 +20,14 @@ const useLogout = () => {
       credentials: 'include',
     })
       .then(() => {
-        router.push('/');
+        setUser(null);
+        router.push('/login');
       })
       .catch((error) => {
         console.error('Error:', error);
-        router.push('/');
+        router.push('/login');
       });
-  }, [cookies._csrf, router]);
+  }, [cookies._csrf, router, setUser]);
 
   return { logout };
 };

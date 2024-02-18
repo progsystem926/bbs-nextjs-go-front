@@ -14,7 +14,7 @@ export const query = graphql(/* GraphQL */ `
 `);
 
 export const createPost = graphql(/* GraphQL */ `
-  mutation createPost($userId: String!, $text: String!) {
+  mutation createPost($userId: Int!, $text: String!) {
     createPost(input: { userId: $userId, text: $text }) {
       id
       text

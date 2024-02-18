@@ -1,9 +1,9 @@
-import { PostList } from '@/components/PostList';
+import NewPost from '@/components/NewPost';
 
 export default function Home() {
   return (
     <main>
-      <PostList />
+      <NewPost />
     </main>
   );
 }
