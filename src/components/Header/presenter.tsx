@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 type Props = {
   onClickNewPost: () => void;
   logout: () => void;
@@ -15,13 +17,13 @@ export const Presenter = (props: Props) => {
           {props.isLogin ? (
             <>
               <li>
-                <a href='/posts'>Posts</a>
+                <Link href='/posts'>Posts</Link>
               </li>
               <li>
-                <a href='/posts/new'>New Post</a>
+                <Link href='/posts/new'>New Post</Link>
               </li>
               <li>
-                <a onClick={props.logout}>Logout</a>
+                <button onClick={props.logout}>Logout</button>
               </li>
             </>
           ) : (
@@ -30,7 +32,7 @@ export const Presenter = (props: Props) => {
                 <a>Sign up</a>
               </li>
               <li>
-                <a href='/login'>Login</a>
+                <Link href='/login'>Login</Link>
               </li>
             </>
           )}

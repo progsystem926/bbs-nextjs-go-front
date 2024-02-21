@@ -29,10 +29,15 @@ export type Scalars = {
   Float: { input: number; output: number };
 };
 
+export type DeletePost = {
+  id: Scalars['Int']['input'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createPost: Post;
   createUser: User;
+  deletePost: Scalars['Boolean']['output'];
 };
 
 export type MutationCreatePostArgs = {
@@ -41,6 +46,10 @@ export type MutationCreatePostArgs = {
 
 export type MutationCreateUserArgs = {
   input: NewUser;
+};
+
+export type MutationDeletePostArgs = {
+  input: DeletePost;
 };
 
 export type NewPost = {
@@ -121,6 +130,15 @@ export type CreateUserMutation = {
     email: string;
     password: string;
   };
+};
+
+export type DeletePostMutationVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type DeletePostMutation = {
+  __typename?: 'Mutation';
+  deletePost: boolean;
 };
 
 export const GetPostQueryDocumentDocument = {
@@ -355,3 +373,51 @@ export const CreateUserDocument = {
     },
   ],
 } as unknown as DocumentNode<CreateUserMutation, CreateUserMutationVariables>;
+export const DeletePostDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'mutation',
+      name: { kind: 'Name', value: 'deletePost' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'deletePost' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'input' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'id' },
+                      value: {
+                        kind: 'Variable',
+                        name: { kind: 'Name', value: 'id' },
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<DeletePostMutation, DeletePostMutationVariables>;

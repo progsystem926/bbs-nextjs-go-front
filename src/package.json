@@ -11,7 +11,7 @@
     "lint:fix": "next lint --fix",
     "format": "prettier --check './**/*.{js,jsx,ts,tsx,json}'",
     "format:fix": "prettier --write './**/*.{js,jsx,ts,tsx,json}'",
-    "generate": "graphql-codegen --watch"
+    "generate": "graphql-codegen"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.18.1",

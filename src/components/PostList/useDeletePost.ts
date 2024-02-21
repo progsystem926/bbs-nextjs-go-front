@@ -5,17 +5,14 @@ import { useRouter } from 'next/navigation';
 import { useCookies } from 'react-cookie';
 
 import { client } from '@/graphql/client';
-import { createPost } from '@/graphql/document';
+import { deletePost } from '@/graphql/document';
 
-import { CreatePost } from '@/types/form';
-
-export const useCreatePost = () => {
+export const useDeletePost = () => {
   const router = useRouter();
   const [cookies] = useCookies(['_csrf']);
-  const requestQuery = async (input: CreatePost) => {
-    await client(cookies._csrf).request(createPost, {
-      userId: input.userId,
-      text: input.text,
+  const requestQuery = async (id: number) => {
+    await client(cookies._csrf).request(deletePost, {
+      id,
     });
   };
   const queryClient = useQueryClient();
@@ -23,7 +20,6 @@ export const useCreatePost = () => {
     mutationFn: requestQuery,
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['posts'] });
-      router.push('/posts');
       router.refresh();
     },
     onError: (error, variables) =>

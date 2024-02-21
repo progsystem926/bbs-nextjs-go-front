@@ -3,6 +3,8 @@ import { GetPostQueryDocumentQuery } from '@/graphql/generated/graphql';
 type Props = {
   data: GetPostQueryDocumentQuery | undefined;
   isLoading: boolean;
+  onClickDelete: (id: number) => Promise<void>;
+  isPending: boolean;
 };
 
 export const Presenter = (props: Props) => {
@@ -28,7 +30,10 @@ export const Presenter = (props: Props) => {
                     {post.created_at}
                   </td>
                   <td>
-                    <button className='btn btn-outline btn-error'>
+                    <button
+                      className='btn btn-outline btn-error'
+                      onClick={() => props.onClickDelete(parseInt(post.id))}
+                    >
                       Delete
                     </button>
                   </td>
@@ -38,6 +43,10 @@ export const Presenter = (props: Props) => {
           </table>
         </div>
       ) : props.isLoading ? (
+        <div className='flex h-screen items-center justify-center'>
+          <span className='loading loading-spinner loading-lg'></span>
+        </div>
+      ) : props.isPending ? (
         <div className='flex h-screen items-center justify-center'>
           <span className='loading loading-spinner loading-lg'></span>
         </div>

@@ -19,6 +19,8 @@ const documents = {
     types.CreatePostDocument,
   '\n  mutation createUser($name: String!, $email: String!, $password: String!) {\n    createUser(input: { name: $name, email: $email, password: $password }) {\n      id\n      name\n      email\n      password\n    }\n  }\n':
     types.CreateUserDocument,
+  '\n  mutation deletePost($id: Int!) {\n    deletePost(input: { id: $id })\n  }\n':
+    types.DeletePostDocument,
 };
 
 /**
@@ -53,6 +55,12 @@ export function graphql(
 export function graphql(
   source: '\n  mutation createUser($name: String!, $email: String!, $password: String!) {\n    createUser(input: { name: $name, email: $email, password: $password }) {\n      id\n      name\n      email\n      password\n    }\n  }\n'
 ): (typeof documents)['\n  mutation createUser($name: String!, $email: String!, $password: String!) {\n    createUser(input: { name: $name, email: $email, password: $password }) {\n      id\n      name\n      email\n      password\n    }\n  }\n'];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: '\n  mutation deletePost($id: Int!) {\n    deletePost(input: { id: $id })\n  }\n'
+): (typeof documents)['\n  mutation deletePost($id: Int!) {\n    deletePost(input: { id: $id })\n  }\n'];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

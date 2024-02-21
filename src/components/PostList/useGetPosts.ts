@@ -8,7 +8,7 @@ import { query } from '@/graphql/document';
 
 export const useGetPosts = () => {
   const [cookies] = useCookies(['_csrf']);
-  const requestQuery = async () => client(cookies._csrf).request(query);
+  const requestQuery = async () => await client(cookies._csrf).request(query);
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ['posts'],
     queryFn: requestQuery,
