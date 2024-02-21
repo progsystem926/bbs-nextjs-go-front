@@ -36,3 +36,9 @@ export const createUser = graphql(/* GraphQL */ `
     }
   }
 `);
+
+export const deletePost = graphql(/* GraphQL */ `
+  mutation deletePost($id: Int!) {
+    deletePost(input: { id: $id })
+  }
+`);
