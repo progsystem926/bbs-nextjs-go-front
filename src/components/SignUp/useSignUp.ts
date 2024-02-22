@@ -6,9 +6,9 @@ import { useCookies } from 'react-cookie';
 
 import { useUserState } from '@/atoms/userAtom';
 import { useSetCsrf } from '@/hooks/useSetCsrf';
-import { Login } from '@/types/form';
+import { SignUp } from '@/types/form';
 
-export const useLogin = () => {
+export const useSignUp = () => {
   const { setUser } = useUserState();
   const { setCsrf } = useSetCsrf();
   const router = useRouter();
@@ -19,14 +19,15 @@ export const useLogin = () => {
     setUseCookies('_csrf', cookies._csrf);
   }, [cookies._csrf, setUseCookies]);
 
-  const login = useCallback(
-    async (Inputs: Login) => {
+  const signUp = useCallback(
+    async (Inputs: SignUp) => {
       await setCsrf();
 
+      params.append('name', Inputs.name);
       params.append('email', Inputs.email);
       params.append('password', Inputs.password);
 
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/signup`, {
         headers: {
           'X-CSRF-TOKEN': cookies._csrf,
         },
@@ -43,11 +44,11 @@ export const useLogin = () => {
         .catch((error) => {
           console.error('Error:', error);
           setUser(null);
-          router.push('/');
+          router.push('/signup');
         });
     },
     [cookies._csrf, params, router, setCsrf, setUser]
   );
 
-  return { login };
+  return { signUp };
 };

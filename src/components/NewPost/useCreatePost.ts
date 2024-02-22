@@ -6,7 +6,6 @@ import { useCookies } from 'react-cookie';
 
 import { client } from '@/graphql/client';
 import { createPost } from '@/graphql/document';
-
 import { CreatePost } from '@/types/form';
 
 export const useCreatePost = () => {
