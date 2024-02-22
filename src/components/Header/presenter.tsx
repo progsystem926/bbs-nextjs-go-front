@@ -29,10 +29,10 @@ export const Presenter = (props: Props) => {
           ) : (
             <>
               <li>
-                <a>Sign up</a>
+                <Link href='/signup'>Sign up</Link>
               </li>
               <li>
-                <Link href='/login'>Login</Link>
+                <Link href='/'>Login</Link>
               </li>
             </>
           )}

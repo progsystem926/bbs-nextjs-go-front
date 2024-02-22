@@ -21,11 +21,11 @@ const useLogout = () => {
     })
       .then(() => {
         setUser(null);
-        router.push('/login');
+        router.push('/');
       })
       .catch((error) => {
         console.error('Error:', error);
-        router.push('/login');
+        router.push('/');
       });
   }, [cookies._csrf, router, setUser]);
 

@@ -15,15 +15,28 @@ type Props = {
 };
 
 export const Presenter = (props: Props) => {
+  const { errors } = props;
+
+  const emailErrorMessage =
+    errors.email &&
+    (errors.email.type === 'required'
+      ? '※Email is required'
+      : errors.email.type === 'pattern'
+        ? '※Email is not the correct pattern'
+        : '');
+
+  const passwordErrorMessage = errors.password && '※Password is required';
+
   return (
     <>
       <h1 className='m-3 text-center text-xl'>Login</h1>
       <form onSubmit={props.handleSubmit(props.onSubmit)}>
         <div className='flex flex-col'>
           <div className='mx-auto text-error'>
-            {props.errors.email && <span>※Email is required</span>}
-            <br />
-            {props.errors.password && <span>※Password is required</span>}
+            {emailErrorMessage && <span>{emailErrorMessage}</span>}
+          </div>
+          <div className='mx-auto text-error'>
+            {passwordErrorMessage && <span>{passwordErrorMessage}</span>}
           </div>
           <label className='mx-auto w-full max-w-xs'>
             <div className='label'>

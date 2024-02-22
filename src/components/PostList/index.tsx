@@ -18,7 +18,7 @@ const PostList = () => {
 
   if (isError) {
     console.error('Error: useGetPosts', error);
-    router.push('/login');
+    router.push('/');
   }
 
   return (
