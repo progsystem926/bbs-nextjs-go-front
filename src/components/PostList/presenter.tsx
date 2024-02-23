@@ -1,4 +1,5 @@
 import { GetPostQueryDocumentQuery } from '@/graphql/generated/graphql';
+import { formatDateTime } from '@/utils/dateTime';
 
 type Props = {
   data: GetPostQueryDocumentQuery | undefined;
@@ -27,7 +28,7 @@ export const Presenter = (props: Props) => {
                   <td className='border-r border-base-200'>{post.text}</td>
                   <td className='border-r border-base-200'>{post.user.name}</td>
                   <td className='border-r border-base-200'>
-                    {post.created_at}
+                    {formatDateTime(post.created_at)}
                   </td>
                   <td>
                     <button
