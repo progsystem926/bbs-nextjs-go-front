@@ -4,7 +4,7 @@ services:
     container_name: front
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: .docker/front/Dockerfile
     tty: true
     volumes:
       - ./src:/app

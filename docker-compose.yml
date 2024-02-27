@@ -1,10 +1,24 @@
 version: "3.8"
 services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "3443:3443"
+      - "8443:8443"
+    volumes:
+      - ".docker/nginx/conf.d:/etc/nginx/conf.d"
+      - ".docker/nginx/cert/localhost.pem:/etc/certs/localhost.pem"
+      - ".docker/nginx/cert/localhost-key.pem:/etc/certs/localhost-key.pem"
+    networks:
+      bbs_network:
+        ipv4_address: 172.30.0.11
+
   front:
     container_name: front
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: .docker/front/Dockerfile
     tty: true
     volumes:
       - ./src:/app
